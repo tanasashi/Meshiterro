@@ -20,14 +20,14 @@
       <% end %>
     </p>
   <% end %>
-  
+
 </div>
-  
-<div class="comments">  
+
+<div class="comments">
 <p>コメント件数: <%= @post_image.post_comments.count %></p>
 <% @post_image.post_comments.each do |post_comment| %>
- <p><%= image_tag('sample-author1.jpg') %></p>
- <%= post_comment.user.name %>
+ <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+ <%= post_comment.user.name %><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
   <%= post_comment.created_at.strftime('%y/%m/%d') %><%= post_comment.comment %>
   <% if post_comment.user == current_user %>
   <div class="comment-delete">
